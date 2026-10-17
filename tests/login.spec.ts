@@ -22,4 +22,14 @@ test.describe('Inicio de sesión', () => {
     await expect(page.getByRole('alert')).toHaveText('Usuario o contraseña incorrectos');
     await expect(page).toHaveURL(/login\.html/); // no debe avanzar
   });
+
+  test('iniciar sesión con los campos vacíos muestra un mensaje de error', async ({ page }) => {
+    // Dejamos los campos vacíos y damos clic directamente en Entrar
+    await page.getByRole('button', { name: 'Entrar' }).click();
+    
+    // Verificamos que aparezca la alerta de error y que sigamos en la página de login
+    await expect(page.getByRole('alert')).toBeVisible();
+    await expect(page).toHaveURL(/login\.html/);
+  });
+
 });

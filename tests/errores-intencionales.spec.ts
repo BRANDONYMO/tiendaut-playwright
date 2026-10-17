@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 // Pruebas que FALLAN A PROPÓSITO para estudiar los mensajes de error.
 // Ejecútalas con:  npm run test:laboratorio
 
-test.describe('Laboratorio de errores @laboratorio', () => {
+test.describe.skip('Laboratorio de errores @laboratorio', () => {
   test('E1 - el elemento no existe (timeout)', async ({ page }) => {
     test.setTimeout(8000);
     await page.goto('/catalogo.html');
